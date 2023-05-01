@@ -14,6 +14,7 @@ declare module 'fastify' {
     RawReply extends RawReplyDefaultExpression<RawServer> = RawReplyDefaultExpression<RawServer>,
     Logger = FastifyBaseLogger
   > {
+    db: Connection;
     config: object;
   }
 }
@@ -21,6 +22,8 @@ declare module 'fastify' {
 import { fastify } from 'fastify';
 import fastifyCors from '@fastify/cors';
 import pino from 'pino';
+import { Connection } from 'mongoose';
+import db from '@lib/db-connection';
 import { swagger } from './swagger';
 import apiV0 from './api/v0';
 
@@ -39,7 +42,7 @@ export const build = async (config: object = {}) => {
   });
 
   server.decorate('config', config);
-  //server.register(db);
+  server.register(db);
   server.register(swagger);
   server.register(apiV0, { prefix: '/api/v0' });
   server.get('/', async function (request, reply) {

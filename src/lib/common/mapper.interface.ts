@@ -7,22 +7,19 @@ export interface Params {
 
 export interface Querystring {
   id: number;
+  site: string;
   state: string;
   type: string;
   name: string;
-  field: string;
-  value: string;
   offset: number;
   limit: number;
   order: string;
 }
 
-export interface Body<T = JSON> {
+export interface Body {
+  id: number;
+  site: string;
   type: string;
   state: string;
-  flags: number;
-  code: string;
   name: string;
-  description: string;
-  extras: T;
 }

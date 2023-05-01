@@ -9,6 +9,7 @@ const start = async () => {
     server?.log.info('Server started successfully');
   } catch (error) {
     server?.log.error(error);
+    console.log(error);
     process.exit(1);
   }
 };

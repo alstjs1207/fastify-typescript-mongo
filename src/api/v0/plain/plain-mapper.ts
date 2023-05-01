@@ -13,4 +13,13 @@ export class PlainMapper {
   parsePlainBody(req: FastifyRequest) {
     return <PlainBody>req.body;
   }
+
+  parsePlainCommand(req: FastifyRequest) {
+    const params = <PlainParams>req.params;
+    const body = <PlainBody>req.body;
+    return {
+      id: params.id,
+      body,
+    };
+  }
 }

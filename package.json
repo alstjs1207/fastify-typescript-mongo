@@ -35,11 +35,13 @@
   "dependencies": {
     "@fastify/cookie": "^8.3.0",
     "@fastify/cors": "^8.2.1",
+    "@fastify/mongodb": "^7.0.0",
     "@fastify/swagger": "^8.3.1",
     "@fastify/swagger-ui": "^1.5.0",
     "fastify": "^4.14.1",
     "fastify-plugin": "^4.5.0",
     "module-alias": "^2.2.2",
+    "mongoose": "^7.1.0",
     "nodemon": "^2.0.20",
     "pino": "^8.8.0",
     "reflect-metadata": "^0.1.13"
