@@ -1,6 +1,6 @@
-import { BaseCrudDao } from '../base-crud-dao';
 import { Connection, Model } from 'mongoose';
-import { plainSchema } from '../../schema/plains';
+import { plainSchema } from '@schema';
+import { BaseCrudDao } from '../base-crud-dao';
 
 export class PlainDao extends BaseCrudDao {
   protected readonly model: Model<any>;

@@ -34,6 +34,10 @@
 //      "@data-source": ["data-source/index.ts"],
       "@server": ["server.ts"],
       "@lib/*": ["lib/*"],
+      "@policy": ["policy/index.ts"],
+      "@service/*": ["service/*"],
+      "@dao/*": ["dao/*"],
+      "@schema": ["schema/index.ts"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like `./node_modules/@types`. */

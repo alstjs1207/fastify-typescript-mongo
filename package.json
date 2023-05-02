@@ -19,7 +19,11 @@
   "_moduleAliases": {
     "@api": "build/api",
     "@server": "build/server.js",
-    "@lib": "build/lib"
+    "@lib": "build/lib",
+    "@policy": "build/policy/index.js",
+    "@service": "build/service",
+    "@dao": "build/dao",
+    "@schema": "build/schema/index.js"
   },
   "repository": {
     "type": "git",
