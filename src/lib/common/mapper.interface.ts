@@ -17,7 +17,7 @@ export interface Querystring {
 }
 
 export interface Body {
-  id: number;
+  id?: number; //auto increment
   site: string;
   type: string;
   state: string;

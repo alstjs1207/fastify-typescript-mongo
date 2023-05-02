@@ -1,10 +1,20 @@
-import { Connection, Model } from 'mongoose';
-import { plainSchema } from '@schema';
+import { Connection } from 'mongoose';
+import { SequenceDocument } from '@lib/common/sequence-document';
+import { plainSchema, sequenceSchema } from '@schema';
 import { BaseCrudDao } from '../base-crud-dao';
 
 export class PlainDao extends BaseCrudDao {
-  protected readonly model: Model<any>;
-  constructor(mongo: Connection, collection: string) {
-    super(mongo.model(collection, plainSchema));
+  constructor({
+    mongo,
+    key,
+    collection,
+    sequence,
+  }: {
+    mongo: Connection;
+    key: string;
+    collection: string;
+    sequence: string;
+  }) {
+    super(key, mongo.model(collection, plainSchema), mongo.model<SequenceDocument>(sequence, sequenceSchema));
   }
 }
