@@ -38,7 +38,7 @@ export class PlainHandler {
   };
 
   protected find = (schema: object) => {
-    this.server.get(`${this.routePath}/`, this.getOptions(schema), async (request, reply) => {
+    this.server.get(`${this.routePath}`, this.getOptions(schema), async (request, reply) => {
       return this.service.find();
     });
   };
