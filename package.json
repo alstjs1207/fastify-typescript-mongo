@@ -4,8 +4,8 @@
   "description": "fastify-typescript-mongo template",
   "main": "index.js",
   "scripts": {
-    "test": "jest ./build/api/v0/*/*.spec.js --detectOpenHandles --forceExit",
-    "test:server": "jest ./build/*.spec.js --detectOpenHandles --forceExit",
+    "test": "jest ./build/api/v0/*/*.spec.js --detectOpenHandles",
+    "test:server": "jest ./build/*.spec.js --detectOpenHandles",
     "prebuild": "npm-run-all clean lint",
     "build": "npx tsc --version && tsc",
     "build:watch": "tsc -w",

@@ -16,7 +16,7 @@ const makeRoute = () => {
     const plainService = new PlainService(plainDao);
     const plainMapper = new PlainMapper();
     const uris = new PlainHandler(server, options, plainMapper, plainService);
-    await uris.bindRoute();
+    uris.bindRoute();
   };
   return route;
 };

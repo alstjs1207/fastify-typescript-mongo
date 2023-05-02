@@ -1,6 +1,6 @@
 import { Connection } from 'mongoose';
 import { SequenceDocument } from '@lib/common/sequence-document';
-import { plainSchema, sequenceSchema } from '@schema';
+import { plainSchema, sequenceSchema } from '../../schema';
 import { BaseCrudDao } from '../base-crud-dao';
 
 export class PlainDao extends BaseCrudDao {
