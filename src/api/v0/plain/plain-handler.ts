@@ -1,7 +1,7 @@
 import { FastifyInstance, FastifyPluginOptions } from 'fastify';
 import { PlainMapper } from '@api/v0/plain/plain-mapper';
 import { DEFAULT_SCHEMA } from '@lib/common/schema';
-import { PlainService } from '../../../service/plain/plain-service';
+import { PlainService } from '@service/plain/plain-service';
 
 export class PlainHandler {
   server: FastifyInstance;

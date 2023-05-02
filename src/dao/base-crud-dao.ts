@@ -22,7 +22,7 @@ export class BaseCrudDao {
   }
 
   async update(id: number, data: Body) {
-    await this.model.updateOne({ id }, data);
+    await this.model.updateOne({ id }, data, { upsert: true });
     return this.model.findOne({ id });
   }
 
