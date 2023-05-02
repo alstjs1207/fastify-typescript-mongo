@@ -80,7 +80,6 @@ export const POST = (entityName: string) => {
       body: {
         type: 'object',
         properties: {
-          id: { type: 'number' },
           site: { type: 'string' },
           type: { type: 'string' },
           state: { type: 'string' },

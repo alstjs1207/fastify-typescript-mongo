@@ -1,1 +1,1 @@
-export { COLLECTIONS } from './mongo';
+export { COLLECTIONS, SEQUENCE_KEY } from './mongo';
