@@ -48,6 +48,10 @@ jobs:
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
           mongodb-db: test
+      - name: create MongoDB
+        run: |
+          mongosh --port 27017
+          db.sequences.insertOne({_id: 'plainId', seq: 0})
       - name: Backend API Test
         run: |
           npm run ci:test
