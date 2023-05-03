@@ -1,0 +1,60 @@
+name: API-Test
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: "! contains(toJSON(github.event.pull_request.labels.*.name), 'ci-skip')"
+    timeout-minutes: 10
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        mongodb-version: [6.x]
+    services:
+      mongodb:
+        image: mongo
+        ports:
+          - 27017:27017
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache node modules
+        id: node-cache
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: |
+            **/node_modules
+            ~/.cache
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Prepare dot npmrc for private registry
+        run: echo //npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }} >> ~/.npmrc
+      - name: Bootstrap
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm ci
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Load config mock server
+        run: npm run build && npm run config-mock
+        env:
+          NODE_ENV: test
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.8.0
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
+          mongodb-db: test
+      - name: Backend API Test
+        run: |
+          npm run ci:test
+        env:
+          NODE_ENV: test
+          CI: true
