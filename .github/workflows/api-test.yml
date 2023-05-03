@@ -43,10 +43,6 @@ jobs:
         run: npm ci
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Load config mock server
-        run: npm run build && npm run config-mock
-        env:
-          NODE_ENV: test
       - name: Start MongoDB
         uses: supercharge/mongodb-github-action@1.8.0
         with:
