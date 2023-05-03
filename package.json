@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest ./build/api/v0/*/*.spec.js --detectOpenHandles",
     "test:server": "jest ./build/*.spec.js --detectOpenHandles",
+    "action:test": "jest ./build/api/v0/*/*.spec.js --verbose",
     "prebuild": "npm-run-all clean lint",
     "build": "npx tsc --version && tsc",
     "build:watch": "tsc -w",
@@ -14,7 +15,7 @@
     "dev": "nodemon build/index.js",
     "start": "node build/index.js",
     "lint": "eslint .",
-    "ci:test": "NODE_ENV=test npm-run-all build test"
+    "ci:test": "NODE_ENV=test npm-run-all build action:test"
   },
   "_moduleAliases": {
     "@api": "build/api",
