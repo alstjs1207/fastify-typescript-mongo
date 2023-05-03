@@ -12,7 +12,7 @@ module.exports = {
     '@policy': '<rootDir>/build/policy/index.js',
     '@dao/(.*)': '<rootDir>/build/dao/$1',
     '@service/(.*)': '<rootDir>/build/service/$1',
-    '@schema/(.*)': '<rootDir>/build/schema/index.js',
+    '@schema': '<rootDir>/build/schema/index.js',
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 };
